@@ -6,7 +6,7 @@ export const runtime = "edge"; // vercel specific for longer response
 
 export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
-    api: '/api/chat'
+    api: '/api/chat', 
   });
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
