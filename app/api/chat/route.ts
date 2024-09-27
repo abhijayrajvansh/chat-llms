@@ -1,25 +1,31 @@
 import { openai } from "@ai-sdk/openai";
 import { createOllama } from "ollama-ai-provider";
-import { streamText, convertToCoreMessages } from "ai";
+import { streamText, convertToCoreMessages, StreamData } from "ai";
 
-// export const runtime = "edge"; // vercel specific for longer response
-// export const maxDuration = 30; // response are generated for max 30s.
+export const runtime = "edge"; // vercel specific for longer response
+export const maxDuration = 30; // response are generated for max 30s.
 
 const ollama = createOllama({
-  baseURL: "http://192.168.29.170:11434/api",
+  baseURL: process.env.OLLAMA_BASE_URL as string
 });
 
 export async function POST(req: Request) {
   const { messages } = await req.json();
-  // debug
-  console.log('Incoming request messages:', messages);
+
+  const data = new StreamData();
+  data.append({ status: 'Checking your issue...' });
 
   const result = await streamText({
     // model: openai('gpt_version'),
     model: ollama('llama3.1:8b'),
+    
     messages: convertToCoreMessages(messages),
+    
+    onFinish() {
+      data.append({ status: 'Solution found!' });
+      data.close();
+    },
   });
 
-  console.log('Response:', result);
-  return result.toDataStreamResponse();
-}
+  return result.toDataStreamResponse({ data });
+} 
