@@ -1,8 +1,14 @@
-import Chat from "@/components/ui/Chat";
+import Chat from "@/components/Chat";
+import Header from "@/components/Header";
 import React from "react";
 
 const page = () => {
-  return <Chat />;
+  return (
+    <div>
+      <Header />
+      <Chat />
+    </div>
+  )
 };
 
 export default page;
