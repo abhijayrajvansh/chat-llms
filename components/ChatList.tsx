@@ -58,7 +58,7 @@ export function ChatList({ messages, session }: ChatList) {
         </>
       ) : null}
 
-      {messages.map((message, index) => (
+      {messages.map((message) => (
         <div
           key={message.id}
           className={`flex flex-col px-2 py-2 ${
@@ -71,10 +71,10 @@ export function ChatList({ messages, session }: ChatList) {
                 className={`${message.role === "user" ? "hidden" : "block"}`}
               >
                 <Image
-                  className="min-w-7 p-1 bg-white rounded-md"
-                  height={10}
-                  width={10}
-                  src="/uptut.jpeg"
+                  className="max-w-16 rounded-md"
+                  height={50}
+                  width={50}
+                  src="/elonpp.webp"
                   alt="uptut-logo"
                 />
               </div>

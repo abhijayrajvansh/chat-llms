@@ -17,7 +17,7 @@ export async function POST(req: Request) {
 
   const result = await streamText({
     // model: openai('gpt_version'),
-    model: ollama('llama3.1:8b'),
+    model: ollama('llama3.2:3b'),
     
     messages: convertToCoreMessages(messages),
     

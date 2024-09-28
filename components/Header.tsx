@@ -10,8 +10,8 @@ const Header = () => {
         <Image
           width={45}
           height={45}
-          className="p-1 bg-white rounded-md"
-          src="/uptut.jpeg"
+          className="rounded-md"
+          src="/abhabhijayrajvanshdotcom_logo.jpeg"
           alt="uptut-logo"
         />
       </div>
