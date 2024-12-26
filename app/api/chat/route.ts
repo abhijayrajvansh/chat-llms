@@ -1,5 +1,5 @@
-import { openai } from "@ai-sdk/openai";
 import { createOllama } from "ollama-ai-provider";
+import { openai } from "@ai-sdk/openai";
 import { streamText, convertToCoreMessages, StreamData } from "ai";
 
 export const runtime = "edge"; // vercel specific for longer response

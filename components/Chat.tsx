@@ -3,7 +3,6 @@
 import { useChat } from "ai/react";
 import { useEffect, useRef } from "react";
 import { ChatList } from "./ChatList";
-import NewScreen from "./NewScreen";
 import { Button } from "./ui/button";
 import { IoSend } from "react-icons/io5";
 
@@ -47,14 +46,15 @@ export default function Chat() {
           {messages.length ? (
             <ChatList messages={messages} session={undefined} />
           ) : (
-            <NewScreen />
+            <></>
           )}
         </div>
 
         <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b">
           <div className="mx-auto sm:max-w-2xl sm:px-4">
             <div className="mb-28 grid grid-cols-2 gap-2 px-4 sm:px-0">
-              {messages.length === 0 &&
+              {/* starting templats */}
+              {/* {messages.length === 0 &&
                 exampleMessages.map((example, index) => (
                   <div
                     key={example.heading}
@@ -69,23 +69,23 @@ export default function Chat() {
                       {example.subheading}
                     </div>
                   </div>
-                ))}
+                ))} */}
               <form onSubmit={handleSubmit}>
                 <div className="fixed bottom-0 left-1/2 m -translate-x-1/2 transfor w-full py-8 bg-background flex items-center justify-center gap-3">
                   <input
-                    className="dark:bg-transparent/30 w-[70%] sm:w-1/2 sm:p-3 p-2 border-2 rounded-xl shadow-md text-black dark:text-white "
-                    value={input}
-                    placeholder="Say something..."
-                    onChange={handleInputChange}
+                  className="dark:bg-transparent/30 w-[70%] sm:w-1/2 sm:px-3 sm:py-2 p-2 rounded-xl shadow-md text-black dark:text-white border-none focus:outline-none ring-1 ring-gray-200 focus:ring-blue-400 focus:ring-2"
+                  value={input}
+                  placeholder="ask something..."
+                  onChange={handleInputChange}
                   />
                   <Button
-                    type="submit"
-                    disabled={isLoading}
-                    variant={"default"}
-                    size={"icon"}
-                    className="py-5 w-10 px-2 rounded-xl"
+                  type="submit"
+                  disabled={isLoading}
+                  variant={"default"}
+                  size={"icon"}
+                  className="py-5 w-10 px-2 rounded-xl"
                   >
-                    <IoSend size={30} />
+                  <IoSend size={30} />
                   </Button>
                 </div>
               </form>
